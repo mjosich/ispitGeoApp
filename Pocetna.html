@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+body {
+  background-repeat: repeat;
+  background-image: url("C:/Users/Korisnik/Desktop/BukurowSite/Images/topografija2.jpg");
+  background-size: 600px 600px;
+
+  }
+
+</style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+     <script type="text/javascript" src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+
+
+<meta name="viewport" content="with=device-width, initial-scale=1.0">
+<title>Друштво младих истраживача Бранислав Букуров</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://use.fontawesome.com/f70df61145.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+<section class="header">
+<nav>
+<a href="index.html"><img src="C:/Users/Korisnik/Desktop/BukurowSite/Images/bijeli.png"
+width="230"
+     height="230" class="logo" id="logos"/></a>
+<div class="nav-links" id="navLinks">
+<i class="fa fa-times" onclick="hideMenu()"></i>
+
+
+<ul>
+<li><a href="C:/Users/Korisnik/Desktop/BukurowSite/Pocetna.html">ПОЧЕТНА</a></li>
+<li><a href="C:/Users/Korisnik/Desktop/BukurowSite/o-nama.html">О НАМА</a></li>
+<li><a href="">ТЕРЕНИ</a></li>
+<li><a href="">ГАЛЕРИЈА</a></li>
+<li><a href="">КОНТАКТ</a></li>
+</ul>
+
+
+</div>
+<i class="fa fa-bars" onclick="showMenu()"></i>
+</nav>
+
+<div class="text-box">
+<h1>Друштво младих истраживача Бранислав Букуров</h1>
+<p>Са вама од 1992.</p>
+
+<a href="#scroll" class="hero-btn">Кликните за више</a>
+</div>
+
+</section>
+
+<!-----О НАМА---------->
+<section class="onama">
+
+<h1 id="scroll">О друштву</h1>
+<p>Друштво је основано 1992. године у Новом Саду</p>
+
+<div class="row">
+<div class="course-col">
+<h3>Циљеви и задаци</h3>
+<p>Циљеви и задаци друштва су: подстицање, окуплјање и организовање младих људи за бавлјење научно-истраживачким радом; остваривање организованог рада са талентованим студентима и ученицима, као и подстицање индивидуалног научног и истраживачког рада младих; организовање издавачке делатности; презентовање научног стваралаштва из области географије, туризма и заштите животне средине.</p>
+</div>
+<div class="course-col">
+<h3>Манифестације</h3>
+<p>Друштво сваке године самостално или у сарадњи са департманом за географију и хотелијерство учествује у различитим радионицама на манифестацијама као што су: „Фестивал науке“, Ноћ музеја“, „Новосадско-пролеће“, „обележавање Међународног дана планете Земље и друго.</p>
+</div>
+<div class="course-col">
+<h3>Научно истраживачке акције/терени</h3>
+<p> У току летњег распуста Друштво организује истраживачке акције/терени, као и волонтерске кампове у оквиру разних пројеката везаних за географске и туризмолошке науке. Последњих неколико година Друштво последњих неколико година Друштво почетком године организује едукативни камп за нове чланове, са циљем њихове едукације, анимације и бољег међусобног упознавања.</p>
+</div>
+</div>
+
+</section>
+<!-------nova sekcija-------->
+<section class="tereni">
+    <h1>ТЕРЕНИ</h1>
+    <p>Друштво организује терене по читавој Србији а понекад и ван граница наше државе</p>
+    <div class="row">
+    <div class="tereni-col">
+    <img src="C:/Users/Korisnik/Desktop/BukurowSite/Images/teren1.jpg">
+    <div class="layer">
+    <h3>УВАЦ</h3>
+    </div>
+    </div>
+    <div class="tereni-col">
+    <img src="C:/Users/Korisnik/Desktop/BukurowSite/Images/teren2.jpg">
+    <div class="layer">
+    <h3>ТАРА</h3>
+    </div>
+    </div>
+    <div class="tereni-col">
+    <img src="C:/Users/Korisnik/Desktop/BukurowSite/Images/teren3.jpg">
+    <div class="layer">
+    <h3>ФРУШКА ГОРА</h3>
+    </div>
+    </div>
+
+    </div>
+     <h1>КАРТА ТЕРЕНА</h1>
+
+    <div id="map" class="map"></div>
+
+    <script>
+ var map = L.map('map').setView({lon: 20.957273, lat: 43.787197}, 6);
+ var wms = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+    layers: 'TOPO-WMS'
+}).addTo(map);
+
+ var osm = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
+    layers: 'TOPO-OSM-WMS'
+}).addTo(map);
+
+var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow/wms', {
+	    layers: 'Projekat_bukurow:SrbijaRaster',
+	    transparent: true,
+    format: 'image/png'
+}).addTo(map);
+
+//var wmsLayers = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow/wms', {
+	  //  layers: 'Projekat_bukurow:Tereni 2021',
+	   //transparent: true,
+	//   format: 'image/png'
+
+//	}).addTo(map);
+
+var wfs_url = 'http://localhost:8080/geoserver/Projekat_bukurow/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Projekat_bukurow:Tereni2021&maxFeatures=50&outputFormat=application/json';
+
+ var terenibukurov = $.getJSON(wfs_url).then((res) => {
+    var layerTereni = L.geoJson(res,  
+	{
+	onEachFeature: function(f,l) {
+	l.bindPopup(f.properties.teren_opis)
+	}
+	
+	}).addTo(map);
+	
+	});
+	
+	
+
+ 
+  //controlLayers.addOverlay(geojsonLayer, 'My GeoJSON layer title');
+
+
+	var baseMaps = {
+	"Топографска": wms,
+	"Саобраћај": osm
+
+};
+
+var overlays = {
+	
+	"Србија": wmsLayer
+	
+	
+	};
+
+var layerControl = L.control.layers(baseMaps, overlays).addTo(map);
+
+
+
+    </script>
+
+
+</section>
+<!--------------futer----------------->
+<section class="footer">
+<h4>Букуров</h4>
+<p>Друштво организује терене по читавој Србији а понекад и ван граница наше државе</p>
+<div class="ikonice">
+<i class="fa fa-facebook"></i>
+<i class="fa fa-instagram"></i>
+<i class="fa fa-linkedin"></i>
+</div>
+<p></p>
+</section>
+
+<!-----javascript za zatvaranje i otvaranje---->
+<script>
+var navLinks = document.getElementById("navLinks");
+function showMenu(){
+navLinks.style.right = "0";
+}
+function hideMenu(){
+navLinks.style.right = "-200px";
+}
+</script>
+
+
+</body>
+</html>
