@@ -132,7 +132,6 @@ var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow
 	  //  layers: 'Projekat_bukurow:Tereni 2021',
 	   //transparent: true,
 	//   format: 'image/png'
-
 //	}).addTo(map);
 
 var wfs_url = 'http://localhost:8080/geoserver/Projekat_bukurow/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Projekat_bukurow:Tereni2021&maxFeatures=50&outputFormat=application/json';
@@ -145,32 +144,16 @@ var wfs_url = 'http://localhost:8080/geoserver/Projekat_bukurow/ows?service=WFS&
 	}
 	
 	}).addTo(map);
-	
 	});
-	
-	
-
- 
-  //controlLayers.addOverlay(geojsonLayer, 'My GeoJSON layer title');
-
-
 	var baseMaps = {
 	"Топографска": wms,
 	"Саобраћај": osm
-
 };
-
 var overlays = {
-	
 	"Србија": wmsLayer
-	
-	
 	};
-
+	    
 var layerControl = L.control.layers(baseMaps, overlays).addTo(map);
-
-
-
     </script>
 
 
