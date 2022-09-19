@@ -6,9 +6,7 @@ body {
   background-repeat: repeat;
   background-image: url("C:/Users/Korisnik/Desktop/BukurowSite/Images/topografija2.jpg");
   background-size: 600px 600px;
-
   }
-
 </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -17,7 +15,6 @@ body {
      <script type="text/javascript" src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
    crossorigin=""></script>
-
 
 <meta name="viewport" content="with=device-width, initial-scale=1.0">
 <title>Друштво младих истраживача Бранислав Букуров</title>
@@ -38,7 +35,6 @@ width="230"
 <div class="nav-links" id="navLinks">
 <i class="fa fa-times" onclick="hideMenu()"></i>
 
-
 <ul>
 <li><a href="C:/Users/Korisnik/Desktop/BukurowSite/Pocetna.html">ПОЧЕТНА</a></li>
 <li><a href="C:/Users/Korisnik/Desktop/BukurowSite/o-nama.html">О НАМА</a></li>
@@ -46,7 +42,6 @@ width="230"
 <li><a href="">ГАЛЕРИЈА</a></li>
 <li><a href="">КОНТАКТ</a></li>
 </ul>
-
 
 </div>
 <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -106,12 +101,9 @@ width="230"
     <h3>ФРУШКА ГОРА</h3>
     </div>
     </div>
-
     </div>
      <h1>КАРТА ТЕРЕНА</h1>
-
     <div id="map" class="map"></div>
-
     <script>
  var map = L.map('map').setView({lon: 20.957273, lat: 43.787197}, 6);
  var wms = L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
@@ -128,11 +120,12 @@ var wmsLayer = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow
     format: 'image/png'
 }).addTo(map);
 
-//var wmsLayers = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow/wms', {
-	  //  layers: 'Projekat_bukurow:Tereni 2021',
-	   //transparent: true,
-	//   format: 'image/png'
-//	}).addTo(map);
+var wmsLayers = L.tileLayer.wms('http://localhost:8080/geoserver/Projekat_bukurow/wms', {
+	    layers: 'Projekat_bukurow:waterways',
+	   transparent: true,
+	   format: 'image/png'
+
+	}).addTo(map);
 
 var wfs_url = 'http://localhost:8080/geoserver/Projekat_bukurow/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Projekat_bukurow:Tereni2021&maxFeatures=50&outputFormat=application/json';
 
@@ -142,21 +135,22 @@ var wfs_url = 'http://localhost:8080/geoserver/Projekat_bukurow/ows?service=WFS&
 	onEachFeature: function(f,l) {
 	l.bindPopup(f.properties.teren_opis)
 	}
-	
 	}).addTo(map);
+	
 	});
 	var baseMaps = {
 	"Топографска": wms,
 	"Саобраћај": osm
 };
 var overlays = {
-	"Србија": wmsLayer
+	"Србија": wmsLayer,
+	"Реке": wmsLayers
 	};
-	    
+
 var layerControl = L.control.layers(baseMaps, overlays).addTo(map);
+
     </script>
-
-
+	
 </section>
 <!--------------futer----------------->
 <section class="footer">
@@ -180,7 +174,6 @@ function hideMenu(){
 navLinks.style.right = "-200px";
 }
 </script>
-
 
 </body>
 </html>
